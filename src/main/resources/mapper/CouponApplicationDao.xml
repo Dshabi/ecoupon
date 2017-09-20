@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhenghao.ecoupon.dao.CouponApplicationDao">
+
+    <insert id="insertCouponApplication">
+        insert into
+          coupon_application(consumer_id, merchant_id, rule_id)
+        values
+          (#{consumerId}, #{merchantId}, #{ruleId})
+    </insert>
+
+    <select id="queryByMerchantId" parameterType="long" resultType="CouponApplication">
+        select
+          coupon_application_id, consumer_id, merchant_id, rule_id, coupon_number, application_time, status
+        from coupon_application
+        where
+          merchant_id = #{merchantId}
+        order by application_time desc
+    </select>
+
+    <select id="queryByConsumerId" parameterType="long" resultType="CouponApplication">
+        select
+          coupon_application_id, consumer_id, merchant_id, rule_id, coupon_number, application_time, status
+        from coupon_application
+        where
+          consumer_id = #{consumerId}
+        order by application_time desc
+    </select>
+
+    <update id="confirm">
+        update
+          coupon_application
+        set
+          coupon_number = #{couponNumber}, status = 1
+        where
+          coupon_application_id = #{couponApplicationId}
+    </update>
+
+    <update id="refuse">
+        update
+          coupon_application
+        set
+          status = -1
+        where
+          coupon_application_id = #{couponApplicationId}
+    </update>
+
+</mapper>

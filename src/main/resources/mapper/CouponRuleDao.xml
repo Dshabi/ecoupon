@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhenghao.ecoupon.dao.CouponRuleDao">
+
+    <insert id="insertCouponRule">
+        insert into
+          coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount,
+          valid_start_time, valid_end_time)
+        values
+          (#{merchantId}, #{over}, #{send}, #{isAccumulation}, #{quote}, #{totalAmount},
+          #{validStartTime}, #{validEndTime})
+    </insert>
+
+    <select id="queryByRuleId" resultType="CouponRule">
+        select
+          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount,
+          valid_start_time, valid_end_time, create_time, status
+        from coupon_rule
+        where
+          coupon_rule_id = #{ruleId}
+    </select>
+
+    <select id="queryAllAvailable" resultType="CouponRule">
+        select
+          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount,
+          valid_start_time, valid_end_time, create_time, status
+        from coupon_rule
+        where
+          status = 1 and valid_end_time > #{nowTime} and #{nowTime} > valid_start_time
+    </select>
+
+    <select id="queryByMerchantId" resultType="CouponRule">
+        select
+          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount,
+          valid_start_time, valid_end_time, create_time, status
+        from coupon_rule
+        where
+          merchant_id = #{merchantId}
+    </select>
+
+    <update id="cancelByCouponRuleId">
+        update coupon_rule
+        set
+          status = -1
+        where
+          coupon_rule_id = #{couponRuleId}
+    </update>
+
+</mapper>

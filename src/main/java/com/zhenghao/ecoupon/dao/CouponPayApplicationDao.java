@@ -13,9 +13,9 @@ public interface CouponPayApplicationDao {
 
     List<CouponPayApplication> queryByMerchantId(@Param("merchantId") long merchantId);
 
+    List<CouponPayApplication> queryByConsumerId(@Param("consumerId") long consumerId);
+
     int confirm(@Param("couponPayApplicationId") long couponPayApplicationId);
 
     int refuse(@Param("couponPayApplicationId") long couponPayApplicationId);
-
-    List<CouponPayApplication> queryByConsumerId(@Param("consumerId") long consumerId);
 }

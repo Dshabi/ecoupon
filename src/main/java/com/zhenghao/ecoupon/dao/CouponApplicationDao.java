@@ -13,10 +13,10 @@ public interface CouponApplicationDao {
 
     List<CouponApplication> queryByMerchantId(@Param("merchantId") long merchantId);
 
+    List<CouponApplication> queryByConsumerId(@Param("consumerId") long consumerId);
+
     int confirm(@Param("couponApplicationId") long couponApplicationId,
                       @Param("couponNumber") int couponNumber);
 
     int refuse(@Param("couponApplicationId") long couponApplicationId);
-
-    List<CouponApplication> queryByConsumerId(@Param("consumerId") long consumerId);
 }

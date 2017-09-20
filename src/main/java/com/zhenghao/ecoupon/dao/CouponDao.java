@@ -11,5 +11,5 @@ public interface CouponDao {
 
     List<Coupon> queryCouponByOwnerId(@Param("ownerId") long owenerId);
 
-    int updateOwner(@Param("couponId") long couponId, @Param("merchantId") long merchantId);
+    int pay(@Param("couponId") long couponId, @Param("merchantId") long merchantId);
 }

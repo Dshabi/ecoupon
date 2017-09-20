@@ -10,7 +10,7 @@ public class Coupon {
 
     private int status;
 
-    private CouponRule couponRule;
+    private CouponRule rule;
 
     public long getCouponId() {
         return couponId;
@@ -44,8 +44,12 @@ public class Coupon {
         this.status = status;
     }
 
-    public void setCouponRule(CouponRule couponRule) {
-        this.couponRule = couponRule;
+    public CouponRule getRule() {
+        return rule;
+    }
+
+    public void setRule(CouponRule rule) {
+        this.rule = rule;
     }
 
     @Override
@@ -55,7 +59,7 @@ public class Coupon {
                 ", ruleId=" + ruleId +
                 ", ownerId=" + ownerId +
                 ", status=" + status +
-                ", couponRule=" + couponRule +
+                ", rule=" + rule +
                 '}';
     }
 }
