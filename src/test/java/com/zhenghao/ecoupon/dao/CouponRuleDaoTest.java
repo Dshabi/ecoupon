@@ -20,10 +20,10 @@ public class CouponRuleDaoTest extends BasicTest {
     @Test
     public void testAll() throws Exception {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date past1 = dateFormat.parse("2017-8-20 00:00:00");
-        Date past2 = dateFormat.parse("2017-8-30 00:00:00");
-        Date future1 = dateFormat.parse("2017-10-20 00:00:00");
-        Date future2 = dateFormat.parse("2017-10-30 00:00:00");
+        Date past1 = dateFormat.parse("2016-8-20 00:00:00");
+        Date past2 = dateFormat.parse("2016-8-30 00:00:00");
+        Date future1 = dateFormat.parse("2016-10-20 00:00:00");
+        Date future2 = dateFormat.parse("2016-10-30 00:00:00");
 
         //not started
         assertEquals(1, couponRuleDao.insertCouponRule(2000, 100, 20, 1, 1000, 2000, future1, future2));
@@ -34,9 +34,10 @@ public class CouponRuleDaoTest extends BasicTest {
         //to be cancelled
         assertEquals(1, couponRuleDao.insertCouponRule(2000, 100, 20, 1, 1000, 2000, past1, future2));
 
-        Date now = dateFormat.parse("2017-9-21 03:00:00");
+        Date now = dateFormat.parse("2016-9-21 03:00:00");
 
         List<CouponRule> availableList = couponRuleDao.queryAllAvailable(now);
+        assertEquals(2, availableList.size());
         System.out.println("\n----- query all available -----");
         for(CouponRule cr : availableList){
             System.out.println(cr);
@@ -45,7 +46,10 @@ public class CouponRuleDaoTest extends BasicTest {
 
         assertEquals(1, couponRuleDao.cancelByCouponRuleId(availableList.get(1).getCouponRuleId()));
 
+        assertEquals(1, couponRuleDao.updateSentAmountByRuleId(100, availableList.get(0).getCouponRuleId()));
+
         List<CouponRule> merchantList = couponRuleDao.queryByMerchantId(2000);
+        assertEquals(5, merchantList.size());
         System.out.println("\n----- query by merchant id -----");
         for(CouponRule cr : merchantList){
             System.out.println(cr);

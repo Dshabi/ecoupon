@@ -6,25 +6,25 @@
 
     <insert id="insertCouponRule">
         insert into
-          coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount,
-          valid_start_time, valid_end_time)
+        coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount,
+        valid_start_time, valid_end_time)
         values
-          (#{merchantId}, #{over}, #{send}, #{isAccumulation}, #{quote}, #{totalAmount},
-          #{validStartTime}, #{validEndTime})
+        (#{merchantId}, #{over}, #{send}, #{isAccumulation}, #{quote}, #{totalAmount},
+        #{validStartTime}, #{validEndTime})
     </insert>
 
     <select id="queryByRuleId" resultType="CouponRule">
         select
-          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount,
-          valid_start_time, valid_end_time, create_time, status
+        coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount, sent_amount,
+        valid_start_time, valid_end_time, create_time, status
         from coupon_rule
         where
-          coupon_rule_id = #{ruleId}
+        coupon_rule_id = #{ruleId}
     </select>
 
     <select id="queryAllAvailable" resultType="CouponRule">
         select
-          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount,
+          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount, sent_amount,
           valid_start_time, valid_end_time, create_time, status
         from coupon_rule
         where
@@ -33,7 +33,7 @@
 
     <select id="queryByMerchantId" resultType="CouponRule">
         select
-          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount,
+          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount, sent_amount,
           valid_start_time, valid_end_time, create_time, status
         from coupon_rule
         where
@@ -46,6 +46,14 @@
           status = -1
         where
           coupon_rule_id = #{couponRuleId}
+    </update>
+
+    <update id="updateSentAmountByRuleId">
+        update coupon_rule
+        set
+          sent_amount = sent_amount + #{sentNum}
+        where
+          coupon_rule_id = #{ruleId}
     </update>
 
 </mapper>

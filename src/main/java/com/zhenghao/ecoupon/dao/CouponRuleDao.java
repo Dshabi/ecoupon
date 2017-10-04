@@ -24,4 +24,6 @@ public interface CouponRuleDao {
     List<CouponRule> queryByMerchantId(@Param("merchantId") long merchantId);
 
     int cancelByCouponRuleId(@Param("couponRuleId") long couponRuleId);
+
+    int updateSentAmountByRuleId(@Param("sentNum") int sentNum, @Param("ruleId") long ruleId);
 }

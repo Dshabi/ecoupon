@@ -38,7 +38,7 @@ CREATE TABLE `consumer` (
 insert into 
 	consumer(account, name, password)
 values  
-	('18458115811', '小明', '123456');
+	('18458115811', 'zhenghao', '123456');
 
 
 -- ----------------------------
@@ -95,6 +95,7 @@ CREATE TABLE `coupon_rule` (
   `is_accumulation` int NOT NULL COMMENT '是否累加:0：不是；1：是',
   `quote` int NOT NULL COMMENT '封顶金额，每单最高优惠金额',
   `total_amount` int NOT NULL COMMENT '发行的总额',
+  `sent_amount` int NOT NULL DEFAULT 0 COMMENT '已发放的金额',    # 17-10-4 添加sent_amount字段，以记录该规则已发放的优惠金额
   `valid_start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '有效期起始',
   `valid_end_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '有效期到期',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '生成时间',
@@ -176,3 +177,10 @@ CREATE TABLE `merchant_application` (
 -- ----------------------------
 -- Records of merchant_application
 -- ----------------------------
+
+
+
+
+
+
+

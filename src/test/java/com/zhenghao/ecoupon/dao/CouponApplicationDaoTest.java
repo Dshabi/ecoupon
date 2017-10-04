@@ -22,6 +22,7 @@ public class CouponApplicationDaoTest extends BasicTest {
         assertEquals(1, couponApplicationDao.insertCouponApplication(1000, 2000, 4000));
 
         List<CouponApplication> merchantList = couponApplicationDao.queryByMerchantId(2000);
+        assertEquals(2, merchantList.size());
         System.out.println("\n----- query by merchant id -----");
         for(CouponApplication ca : merchantList){
             System.out.println(ca);
@@ -29,6 +30,7 @@ public class CouponApplicationDaoTest extends BasicTest {
         System.out.println("----- ----- -----\n");
 
         List<CouponApplication> consumerList = couponApplicationDao.queryByConsumerId(1000);
+        assertEquals(2, consumerList.size());
         System.out.println("\n----- query by consumer id -----");
         for(CouponApplication ca : consumerList){
             System.out.println(ca);
@@ -41,6 +43,7 @@ public class CouponApplicationDaoTest extends BasicTest {
                 refuse(merchantList.get(1).getCouponApplicationId()));
 
         List<CouponApplication> merchantList2 = couponApplicationDao.queryByMerchantId(2000);
+        assertEquals(2, merchantList2.size());
         System.out.println("\n----- query by merchant id -----");
         for(CouponApplication ca : merchantList2){
             System.out.println(ca);

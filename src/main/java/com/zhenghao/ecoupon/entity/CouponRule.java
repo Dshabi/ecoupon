@@ -18,6 +18,8 @@ public class CouponRule {
 
     private int totalAmount;
 
+    private int sentAmount;
+
     private Date validStartTime;
 
     private Date validEndTime;
@@ -82,6 +84,14 @@ public class CouponRule {
         this.totalAmount = totalAmount;
     }
 
+    public int getSentAmount() {
+        return sentAmount;
+    }
+
+    public void setSentAmount(int sentAmount) {
+        this.sentAmount = sentAmount;
+    }
+
     public Date getValidStartTime() {
         return validStartTime;
     }
@@ -124,6 +134,7 @@ public class CouponRule {
                 ", isAccumulation=" + isAccumulation +
                 ", quote=" + quote +
                 ", totalAmount=" + totalAmount +
+                ", sentAmount=" + sentAmount +
                 ", validStartTime=" + validStartTime +
                 ", validEndTime=" + validEndTime +
                 ", createTime=" + createTime +
