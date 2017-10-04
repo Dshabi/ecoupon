@@ -1,5 +1,6 @@
 package com.zhenghao.ecoupon.dao;
 
+import com.zhenghao.ecoupon.dto.PromotionActivity;
 import com.zhenghao.ecoupon.entity.CouponRule;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,7 +20,10 @@ public interface CouponRuleDao {
 
     CouponRule queryByRuleId(@Param("ruleId") long ruleId);
 
-    List<CouponRule> queryAllAvailable(@Param("nowTime") Date nowTime);
+    List<PromotionActivity> queryAvailablePromotionActivity(@Param("nowTime") Date nowTime);
+
+    //TODO
+    List<PromotionActivity> queryAllPromotionActivity();
 
     List<CouponRule> queryByMerchantId(@Param("merchantId") long merchantId);
 

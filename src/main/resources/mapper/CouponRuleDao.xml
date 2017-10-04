@@ -22,13 +22,18 @@
         coupon_rule_id = #{ruleId}
     </select>
 
-    <select id="queryAllAvailable" resultType="CouponRule">
+    <select id="queryAvailablePromotionActivity" resultType="com.zhenghao.ecoupon.dto.PromotionActivity">
         select
-          coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount, sent_amount,
-          valid_start_time, valid_end_time, create_time, status
-        from coupon_rule
+        cr.coupon_rule_id, cr.merchant_id,
+        cr.over, cr.send, cr.is_accumulation, cr.quote, cr.total_amount,
+        cr.valid_start_time, cr.valid_end_time, cr.create_time, cr.status,
+        m.name, m.address
+        from coupon_rule cr
+        inner join merchant m
+        on
+        cr.merchant_id = m.merchant_id
         where
-          status = 1 and valid_end_time > #{nowTime} and #{nowTime} > valid_start_time
+        status = 1 and valid_end_time > #{nowTime} and #{nowTime} > valid_start_time
     </select>
 
     <select id="queryByMerchantId" resultType="CouponRule">

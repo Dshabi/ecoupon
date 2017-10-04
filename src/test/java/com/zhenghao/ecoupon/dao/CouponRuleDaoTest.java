@@ -1,5 +1,6 @@
 package com.zhenghao.ecoupon.dao;
 
+import com.zhenghao.ecoupon.dto.PromotionActivity;
 import com.zhenghao.ecoupon.entity.CouponRule;
 import org.junit.Test;
 
@@ -36,11 +37,11 @@ public class CouponRuleDaoTest extends BasicTest {
 
         Date now = dateFormat.parse("2016-9-21 03:00:00");
 
-        List<CouponRule> availableList = couponRuleDao.queryAllAvailable(now);
+        List<PromotionActivity> availableList = couponRuleDao.queryAvailablePromotionActivity(now);
         assertEquals(2, availableList.size());
         System.out.println("\n----- query all available -----");
-        for(CouponRule cr : availableList){
-            System.out.println(cr);
+        for(PromotionActivity pa : availableList){
+            System.out.println(pa);
         }
         System.out.println("----- ----- -----\n");
 

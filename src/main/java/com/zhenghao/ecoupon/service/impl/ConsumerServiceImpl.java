@@ -42,13 +42,6 @@ public class ConsumerServiceImpl implements ConsumerService {
     }
 
     @Override
-    public List<CouponRule> queryAllAvailableCouponRule() {
-        Date now = new Date();
-
-        return couponRuleDao.queryAllAvailable(now);
-    }
-
-    @Override
     public boolean applyCoupon(long consumerId, long merchantId, long ruleId)
             throws ActivityEndException, InnerException {
         Date now = new Date();

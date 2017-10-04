@@ -13,24 +13,24 @@
 
     <select id="queryCouponByOwnerId" resultType="Coupon">
         select
-          c.coupon_id, c.rule_id, c.owner_id, c.status,
-          cr.coupon_rule_id "rule.coupon_rule_id",
-          cr.merchant_id "rule.merchant_id",
-          cr.over "rule.over",
-          cr.send "rule.send",
-          cr.is_accumulation "rule.is_accumulation",
-          cr.quote "rule.quote",
-          cr.total_amount "rule.total_amount",
-          cr.valid_start_time "rule.validStartTime",
-          cr.valid_end_time "rule.validEndTime",
-          cr.create_time "rule.createTime",
-          cr.status "rule.status"
+        c.coupon_id, c.rule_id, c.owner_id, c.status,
+        cr.coupon_rule_id "rule.coupon_rule_id",
+        cr.merchant_id "rule.merchant_id",
+        cr.over "rule.over",
+        cr.send "rule.send",
+        cr.is_accumulation "rule.is_accumulation",
+        cr.quote "rule.quote",
+        cr.total_amount "rule.total_amount",
+        cr.valid_start_time "rule.validStartTime",
+        cr.valid_end_time "rule.validEndTime",
+        cr.create_time "rule.createTime",
+        cr.status "rule.status"
         from coupon c
         inner join coupon_rule cr
         on
-          c.rule_id = cr.coupon_rule_id
+        c.rule_id = cr.coupon_rule_id
         where
-          c.owner_id = #{ownerId}
+        c.owner_id = #{ownerId}
     </select>
 
     <update id="pay">

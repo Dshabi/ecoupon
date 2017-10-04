@@ -92,14 +92,14 @@ CREATE TABLE `coupon_rule` (
   `merchant_id` bigint NOT NULL COMMENT '商户id',
   `over` int NOT NULL COMMENT '满',
   `send` int NOT NULL COMMENT '送',
-  `is_accumulation` int NOT NULL COMMENT '是否累加:0：不是；1：是',
+  `is_accumulation` int NOT NULL COMMENT '是否累加:0：不累加；1：是',
   `quote` int NOT NULL COMMENT '封顶金额，每单最高优惠金额',
   `total_amount` int NOT NULL COMMENT '发行的总额',
   `sent_amount` int NOT NULL DEFAULT 0 COMMENT '已发放的金额',    # 17-10-4 添加sent_amount字段，以记录该规则已发放的优惠金额
   `valid_start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '有效期起始',
   `valid_end_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '有效期到期',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '生成时间',
-  `status` tinyint NOT NULL DEFAULT 1 COMMENT '状态，1：发行中；-1：结束发行',
+  `status` tinyint NOT NULL DEFAULT 1 COMMENT '状态，1：发行中；-1：结束发行', # 待增加一个待审核状态
   PRIMARY KEY (`coupon_rule_id`),
   KEY `idx_merchant_id` (`merchant_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4000 DEFAULT CHARSET=utf8 COMMENT='优惠券发放规则表';
@@ -110,6 +110,12 @@ insert into
   coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount)
 values
   ('2000', '100', '100', '0', '1000', '10000');
+  
+insert into 
+  coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount, valid_start_time, valid_end_time) 
+values 
+  ('2000', '100', '100', '0', '1000', '10000', '2015-9-9 00:00:00', '2018-9-9 00:00:00'),
+  ('2001', '100', '100', '1', '2000', '20000', '2016-9-9 00:00:00', '2019-9-9 00:00:00');
 
 -- ----------------------------
 -- 5.Table structure for `coupon_circulation`

@@ -11,8 +11,6 @@ public interface ConsumerService {
 
     List<Coupon> queryAllCoupon(long consumerId);
 
-    List<CouponRule> queryAllAvailableCouponRule();
-
     boolean applyCoupon(long consumerId, long merchantId, long ruleId);
 
     List<CouponApplication> queryAllApplication(long consumerId);
