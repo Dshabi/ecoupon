@@ -4,7 +4,7 @@ public class Consumer {
 
     private long consumerId;
 
-    private int account;
+    private long account;
 
     private String password;
 
@@ -18,11 +18,11 @@ public class Consumer {
         this.consumerId = consumerId;
     }
 
-    public int getAccount() {
+    public long getAccount() {
         return account;
     }
 
-    public void setAccount(int account) {
+    public void setAccount(long account) {
         this.account = account;
     }
 

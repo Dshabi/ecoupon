@@ -4,7 +4,7 @@ public class Merchant {
 
     private long merchantId;
 
-    private int account;
+    private long account;
 
     private String name;
 
@@ -22,11 +22,11 @@ public class Merchant {
         this.merchantId = merchantId;
     }
 
-    public int getAccount() {
+    public long getAccount() {
         return account;
     }
 
-    public void setAccount(int account) {
+    public void setAccount(long account) {
         this.account = account;
     }
 

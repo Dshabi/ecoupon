@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -18,7 +19,7 @@ public class PromotionActivityController {
     private CouponRuleService couponRuleService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String ruleList(Model model) {
+    public String activityList(Model model) {
         List<PromotionActivity> promotionActivities = couponRuleService.queryAvailablePromotionActivity();
         model.addAttribute("promotionActivities", promotionActivities);
         return "promotionActivities";

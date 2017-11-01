@@ -38,7 +38,7 @@ public class CouponRuleDaoTest extends BasicTest {
         Date now = dateFormat.parse("2016-9-21 03:00:00");
 
         List<PromotionActivity> availableList = couponRuleDao.queryAvailablePromotionActivity(now);
-        assertEquals(2, availableList.size());
+        assertEquals(4, availableList.size());
         System.out.println("\n----- query all available -----");
         for(PromotionActivity pa : availableList){
             System.out.println(pa);
@@ -50,7 +50,7 @@ public class CouponRuleDaoTest extends BasicTest {
         assertEquals(1, couponRuleDao.updateSentAmountByRuleId(100, availableList.get(0).getCouponRuleId()));
 
         List<CouponRule> merchantList = couponRuleDao.queryByMerchantId(2000);
-        assertEquals(5, merchantList.size());
+        assertEquals(6, merchantList.size());
         System.out.println("\n----- query by merchant id -----");
         for(CouponRule cr : merchantList){
             System.out.println(cr);

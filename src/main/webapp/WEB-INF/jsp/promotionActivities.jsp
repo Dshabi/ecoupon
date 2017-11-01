@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CouponRule List</title>
-    <%@include file="common/head.jsp" %>
+    <title>Promotion Activities List</title>
+    <%@include file="common/dashboardhead.jsp" %>
 </head>
 <body>
+    <%@include file="common/nav.jsp" %>
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
@@ -49,8 +50,5 @@
         </div>
     </div>
 </body>
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%@include file="common/tail.jsp" %>
 </html>

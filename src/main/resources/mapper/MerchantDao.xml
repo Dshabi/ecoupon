@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhenghao.ecoupon.dao.MerchantDao">
+
+    <select id="queryByAccount" parameterType="long" resultType="Merchant">
+        select
+        merchant_id, account, name, password, balance, address
+        from merchant
+        where
+        account = #{account}
+    </select>
+
+</mapper>
