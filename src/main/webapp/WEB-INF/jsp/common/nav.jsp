@@ -8,12 +8,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<%=request.getContextPath()%>/promotion_activity/list">Ecoupon</a>
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/promotion_activity/list">Ecoupon 电子优惠券平台</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="<%=request.getContextPath()%>/<%=request.getSession().getAttribute("role")%>/activity_list">我的</a></li>
                 <li><a href="<%=request.getContextPath()%>/login">登录</a></li>
                 <li><a href="#">注册</a></li>
             </ul>

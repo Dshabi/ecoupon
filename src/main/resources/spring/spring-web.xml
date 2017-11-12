@@ -35,4 +35,12 @@
 
     <!--4:扫描web相关的bean-->
     <context:component-scan base-package="com.zhenghao.ecoupon.web"/>
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/consumer/**"/>
+            <mvc:mapping path="/merchant/**"/>
+            <bean class="com.zhenghao.ecoupon.interceptor.LoginInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

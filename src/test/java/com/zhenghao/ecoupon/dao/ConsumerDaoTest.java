@@ -14,9 +14,9 @@ public class ConsumerDaoTest extends BasicTest {
 
     @Test
     public void queryByAccount() throws Exception {
-        Consumer consumer = consumerDao.queryByAccount(18458115811L);
+        Consumer consumer = consumerDao.queryByAccount(111L);
         assertEquals("zhenghao", consumer.getName());
-        assertEquals("123456", consumer.getPassword());
+        assertEquals("123", consumer.getPassword());
     }
 
 }

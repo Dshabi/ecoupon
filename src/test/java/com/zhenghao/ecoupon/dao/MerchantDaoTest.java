@@ -14,9 +14,9 @@ public class MerchantDaoTest extends BasicTest {
 
     @Test
     public void queryByAccount() throws Exception {
-        Merchant merchant = merchantDao.queryByAccount(13844445555L);
+        Merchant merchant = merchantDao.queryByAccount(222L);
         assertEquals("外婆家", merchant.getName());
-        assertEquals("123456", merchant.getPassword());
+        assertEquals("123", merchant.getPassword());
         assertEquals(20000, merchant.getBalance());
         assertEquals("玉泉", merchant.getAddress());
     }

@@ -2,6 +2,7 @@ package com.zhenghao.ecoupon.service.impl;
 
 import com.zhenghao.ecoupon.dao.ConsumerDao;
 import com.zhenghao.ecoupon.dao.MerchantDao;
+import com.zhenghao.ecoupon.dto.LoginResult;
 import com.zhenghao.ecoupon.entity.Consumer;
 import com.zhenghao.ecoupon.entity.Merchant;
 import com.zhenghao.ecoupon.enums.LoginStateEnum;
@@ -19,22 +20,22 @@ public class LoginServiceImpl implements LoginService {
     private MerchantDao merchantDao;
 
     @Override
-    public LoginStateEnum loginCheck(long account, String password) {
+    public LoginResult loginCheck(long account, String password) {
         Consumer consumer = consumerDao.queryByAccount(account);
         if(consumer != null) {
             if(consumer.getPassword().equals(password)) {
-                return LoginStateEnum.CONSUMERLOGIN;
+                return new LoginResult<>(LoginStateEnum.CONSUMERLOGIN, consumer);
             }
             else
-                return LoginStateEnum.LOGINFAIL;
+                return new LoginResult<>(LoginStateEnum.LOGINFAIL, null);
         }
         Merchant merchant = merchantDao.queryByAccount(account);
         if(merchant != null) {
             if(merchant.getPassword().equals(password))
-                return LoginStateEnum.MERCHANTLOGIN;
+                return new LoginResult<>(LoginStateEnum.MERCHANTLOGIN, merchant);
             else
-                return LoginStateEnum.LOGINFAIL;
+                return new LoginResult<>(LoginStateEnum.LOGINFAIL, null);
         }
-        return LoginStateEnum.LOGINFAIL;
+        return new LoginResult<>(LoginStateEnum.LOGINFAIL, null);
     }
 }

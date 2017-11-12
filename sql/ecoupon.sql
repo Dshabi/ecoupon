@@ -36,9 +36,9 @@ CREATE TABLE `consumer` (
 -- Records of consumer
 -- ----------------------------
 insert into 
-	consumer(account, name, password)
+	consumer(consumer_id, account, name, password)
 values  
-	('18458115811', 'zhenghao', '123456');
+	('1000', '111', 'zhenghao', '123');
 
 
 -- ----------------------------
@@ -60,10 +60,10 @@ CREATE TABLE `merchant` (
 -- Records of merchant
 -- ----------------------------
 insert into
-  merchant(account, name, password, balance, address)
+  merchant(merchant_id, account, name, password, balance, address)
 values
-  ('13844445555', '外婆家', '123456', '20000', '玉泉'),
-  ('15366667777', '绿茶', '123456', '30000', '紫金港');
+  ('2000', '222', '外婆家', '123', '20000', '玉泉'),
+  ('2001', '333', '绿茶', '123', '30000', '紫金港');
 
 
 -- ----------------------------
@@ -82,6 +82,12 @@ CREATE TABLE `coupon` (
 -- ----------------------------
 -- Records of coupon
 -- ----------------------------
+insert into 
+	coupon(coupon_id, rule_id, owner_id, status)
+values  
+	('3000', '4000', '1000', '1'),
+	('3001', '4000', '2000', '2');
+
 
 -- ----------------------------
 -- 4.Table structure for `coupon_rule`
@@ -106,16 +112,17 @@ CREATE TABLE `coupon_rule` (
 -- ----------------------------
 -- Records of coupon_rule
 -- ----------------------------
-insert into
-  coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount)
-values
-  ('2000', '100', '100', '0', '1000', '10000');
-  
 insert into 
-  coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount, valid_start_time, valid_end_time) 
+  coupon_rule(coupon_rule_id, merchant_id, over, send, is_accumulation, quote, total_amount, valid_start_time, valid_end_time) 
 values 
-  ('2000', '100', '100', '0', '1000', '10000', '2015-9-9 00:00:00', '2018-9-9 00:00:00'),
-  ('2001', '100', '100', '1', '2000', '20000', '2016-9-9 00:00:00', '2019-9-9 00:00:00');
+  ('4000', '2000', '100', '100', '0', '1000', '10000', '2015-9-9 00:00:00', '2018-9-9 00:00:00'),
+  ('4001', '2001', '100', '100', '1', '2000', '20000', '2016-9-9 00:00:00', '2019-9-9 00:00:00');
+  
+-- insert into
+--   coupon_rule(merchant_id, over, send, is_accumulation, quote, total_amount)
+-- values
+--   ('2000', '100', '100', '0', '1000', '10000');
+
 
 -- ----------------------------
 -- 5.Table structure for `coupon_circulation`
@@ -144,6 +151,13 @@ CREATE TABLE `coupon_application` (
 -- ----------------------------
 -- Records of coupon_application
 -- ----------------------------
+insert into 
+  coupon_application(coupon_application_id, consumer_id, merchant_id, rule_id, status, application_time) 
+values 
+  ('6000', '1000', '2000', '4000', '0', '2016-9-9 00:00:00'),
+  ('6001', '1000', '2001', '4001', '1', '2016-9-9 00:00:00');
+
+
 
 -- ----------------------------
 -- 7.Table structure for `coupon_pay_application`
